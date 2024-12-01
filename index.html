@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+/* Reset dan box sizing */
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+/* Body dan Font */
+body {
+    font-family: 'Arial', sans-serif; 
+    line-height: 1.6; 
+    background-color: #e3f2fd; 
+    color: #333; 
+    text-align: justify; 
+}
+
+body h2 {
+    text-align: center; 
+}
+
+/* Header */
+header {
+    background-color: #90caf9;  
+    color: #040844; 
+    padding: 20px 0; 
+    text-align: center; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);   
+    width: 100%; /* Pastikan header memenuhi lebar layar */
+    position: relative; /* Membuat header tetap penuh pada ukuran layar */
+}
+
+header h1 {
+    font-size: 4em; 
+    margin-bottom: 10px; 
+}
+
+/* Navigasi */
+nav ul {
+    list-style: none; 
+    display: inline-flex; 
+}
+
+nav li {
+    position: relative; 
+    margin: 0 20px; 
+}
+
+nav a {
+    color: #040844; 
+    text-decoration: none; 
+    padding: 12px 15px; 
+    border-radius: 5px; 
+    transition: background-color 0.3s, transform 0.2s; 
+    cursor: pointer; 
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.3); 
+    transform: scale(1.05); 
+}
+
+/* Dropdown */
+.dropdown {
+    display: none; 
+    position: absolute; 
+    background-color: #bbdefb;  
+    padding: 10px 0; 
+    border-radius: 5px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    z-index: 10; 
+}
+
+nav li:hover .dropdown {
+    display: block; 
+}
+
+.dropdown li {
+    margin: 0; 
+}
+
+.dropdown a {
+    display: block; 
+    padding: 10px 20px; 
+    transition: background-color 0.3s; 
+}
+
+.dropdown a:hover {
+    background-color: rgba(255, 255, 255, 0.2); 
+}
+
+/* Banner Image */
+.banner-image {
+    max-width: 100%; 
+    height: auto; 
+    border-radius: 10px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+/* Developer Image */
+.developer-image {
+    width: 450px; 
+    height: auto; 
+    display: block; 
+    margin: 0 auto 15px auto; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+}
+
+/* Konten Section */
+.content-section {
+    display: none; 
+    margin-top: 20px; 
+    padding: 20px; 
+    background-color: #ffffff; 
+    border-radius: 10px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.content-section.active {
+    display: block; 
+}
+
+.content-section h2 {
+    color: #000000; 
+    margin-bottom: 10px; 
+    font-size: 1.8em; 
+}
+
+/* Grid Layout */
+.container {
+    display: grid;
+    grid-template-columns: 1fr; 
+    gap: 10px;
+    padding: 20px;
+    background-color: #e3f2fd; 
+}
+
+.kiri, .tengah, .kanan {
+    background-color: #ffffff; 
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); 
+}
+
+.kiri {
+    text-align: center;
+}
+
+.logounram img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.kanan {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-left: 1px solid #ccc;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.kanan h2 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.kanan ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.kanan li {
+    margin-bottom: 10px;
+}
+
+.kanan li a {
+    text-decoration: none;
+    color: #000000;
+    transition: color 0.3s;
+}
+
+.kanan li a:hover {
+    color: #000000;
+    font-weight: bold;
+}
+
+/* Footer */
+footer {
+    background-color: #64b5f6; 
+    color: #040844; 
+    padding: 10px 0; 
+    text-align: center; 
+}
+
+/* Responsif */
+@media (max-width: 600px) { 
+    .container {
+        grid-template-columns: 1fr 1fr 1fr; 
+        gap: 5px;
+    }
+
+    .kiri, .tengah, .kanan {
+        padding: 10px; 
+        text-align: center; 
+    }
+
+    .logounram img {
+        width: 70%; 
+        margin: 0 auto;
+    }
+
+    footer p {
+        font-size: 0.8em;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) { 
+    .container {
+        grid-template-columns: 1fr 1fr 1fr; 
+        gap: 15px;
+    }
+
+    .kanan {
+        grid-column: span 2; 
+    }
+}
+
+@media (min-width: 1025px) { 
+    .container {
+        grid-template-columns: 200px auto 300px; 
+    }
+
+    .logounram img {
+        max-width: 100%; 
+    }
+}
+
+    </style>
+
+<title>EKSPONEN</title> 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script> 
+<script> 
+    function showContent(contentId) {
+        var sections = document.getElementsByClassName('content-section');
+        for (var i = 0; i < sections.length; i++) {
+            sections[i].classList.remove('active');
+        }
+        document.getElementById(contentId).classList.add('active');
+    }
+</script>
+</head>
+
+<body>
+    <header> 
+        <h1>EKSPONEN</h1> 
+        <nav> 
+            <ul> 
+                <!-- Menu navigasi utama dengan daftar tautan -->
+                <li><a onclick="showContent('beranda')">BERANDA</a></li> 
+                <!-- Tautan 'BERANDA' yang saat diklik memanggil fungsi 'showContent' untuk menampilkan konten beranda -->
+                <li>
+                    <a href="javascript:void(0);">MATERI</a> 
+                    <!-- Tautan 'MATERI' dengan dropdown submenu -->
+                    <ul class="dropdown"> 
+                        <!-- Submenu dropdown yang menampilkan tautan materi lainnya -->
+                        <li><a onclick="showContent('pengertian')">Pengertian</a></li> 
+                        <!-- Tautan 'Pengertian' yang akan menampilkan konten pengertian -->
+                        <li><a onclick="showContent('operasi')">Operasi</a></li> 
+                        <!-- Tautan 'Operasi' untuk menampilkan konten operasi eksponen -->
+                        <li><a onclick="showContent('sifat')">Sifat</a></li> 
+                        <!-- Tautan 'Sifat' untuk menampilkan sifat eksponen -->
+                        <li><a onclick="showContent('penutup')">Penutup</a></li> 
+                        <!-- Tautan 'Penutup' untuk menampilkan bagian penutup materi -->
+                    </ul>
+                </li>
+                <li><a onclick="showContent('contohsoal')">CONTOH SOAL</a></li> 
+                <!-- Tautan 'CONTOH SOAL' untuk menampilkan bagian soal eksponen -->
+                <li><a onclick="showContent('latihan')">LATIHAN</a></li> 
+                <!-- Tautan 'LATIHAN' untuk menampilkan bagian latihan soal -->
+                <li><a onclick="showContent('tentangpengembang')">TENTANG PENGEMBANG</a></li> 
+                <!-- Tautan 'TENTANG PENGEMBANG' untuk menampilkan profil pengembang halaman -->
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="kiri">
+            <div class="logounram">
+                <img src="image/unram.png" alt="logounram">
+            </div>
+            <p>Universitas Mataram menyelenggarakan berbagai jenjang program pendidikan mulai dari vokasi, diploma, program sarjana, pascasarjana, dan profesi. Sebagai universitas berbasis riset dengan daya saing internasional maka Universitas Mataram juga membuka berbagai program internasional.</p>
+        </div>
+
+        <div class="tengah">
+            <main>
+                <div id="beranda" class="content-section active">
+                    <!-- Bagian Beranda yang ditampilkan secara default dengan class 'active' -->
+                    <h2>SELAMAT DATANG DI EKSPONEN</h2> 
+                    <!-- Heading utama di bagian Beranda -->
+                    <img src="image/eksponen.jpg" class="banner-image"> 
+                    <!-- Gambar banner untuk Beranda -->
+                    <p>Halo pejuang matematika! Semoga kalian selalu sehat dan semangat dalam belajar.</p> 
+                    <!-- Paragraf penyambutan di halaman Beranda -->
+                    <p>Pada halaman ini, kalian akan mempelajari dasar-dasar Eksponen serta cara menyelesaikannya.</p>
+                    <!-- Paragraf penyambutan di halaman Beranda -->
+                </div>
+
+                <div id="pengertian" class="content-section"> 
+                    <!-- Bagian Pengertian Eksponen, tidak aktif secara default -->
+                    <h2>Pengertian Eksponen</h2> 
+                    <!-- Heading untuk bagian pengertian eksponen -->
+                    <p>Eksponen adalah konsep atau cara penulisan untuk menyatakan pengulangan operasi perkalian dengan bilangan yang sama. Bentuk ekspresi eksponen ditulis sebagai \( a^n \), di mana \( a \) adalah dasar eksponen dan \( n \) adalah pangkat eksponen.</p>
+                    <!-- Paragraf yang menjelaskan pengertian eksponen menggunakan format LaTeX -->
+                    <p>Melalui eksponen, kita dapat dengan mudah menggambarkan dan menghitung hasil dari operasi perkalian yang berulang atau berpangkat.</p>
+                </div>
+
+                <div id="operasi" class="content-section"> 
+                    <!-- Bagian Operasi Dasar Eksponen -->
+                    <h2>Operasi Dasar Eksponen</h2>
+                    <ol>
+                        <li><strong>Pangkat Positif:</strong> Ketika n adalah bilangan bulat positif, \( a^n \) berarti \( a \) dikalikan dengan dirinya sendiri sebanyak \( n \) kali.  Contohnya, \( 2^3 = 2  \times 2  \times 2 = 8 \).</li>
+                        <!-- Penjelasan tentang operasi pangkat positif -->
+                        <li><strong>Pangkat Nol:</strong> \( a^0 = 1 \) untuk setiap bilangan bulat \( a^0 \) adalah konvensi yang diterima untuk matematika eksponen, meskipun \( a = 0 \), \( 0^0 \) seringkali dianggap tidak terdefinisi secara ketat dalam konteks matematis yang lebih ketat.</li>
+                        <!-- Penjelasan tentang operasi pangkat nol -->
+                        <li><strong>Pangkat Negatif:</strong> Jika n adalah bilangan bulat negatif, \( a^{-n} = \frac{1}{a^n} \). Ini berarti a pangkat negatif adalah kebalikan a ke pangkat positif. Misalnya, \( 2^-4 = \frac{1}{2^4} =  \frac{1}{16} \). </li>
+                        <!-- Penjelasan tentang operasi pangkat negatif -->
+                    </ol>
+                </div>
+
+                <div id="sifat" class="content-section"> 
+                    <!-- Bagian Sifat Eksponen -->
+                    <h2>Sifat Fungsi Eksponen</h2>
+                    <ol>
+                        <li><strong>Sifat Perkalian Eksponen:</strong> Sifat ini terlihat ketika mengalikan dua bilangan yang memiliki dasar eksponen yang sama, kita dapat menjumlahkan eksponennya. Misalnya, \( a^m \times a^n = a^{m+n} \). Contohnya, \( 2^3 \times 2^4 = 2^{3+4} = 2^7 = 128 \).</li>
+                        <!-- Penjelasan tentang sifat perkalian eksponen -->
+                        <li><strong>Sifat Pembagian Eksponen:</strong> Ketika kita membagi dua bilangan dengan dasar eksponen yang sama, kita dapat mengurangi eksponennya. Misalnya, \( \frac {a^m}{a^n} = a^{m-n} \). Contohnya, \( \frac {3^8}{3^6} = 3^{8-6} = 3^2 = 9 \).</li>
+                        <!-- Penjelasan tentang sifat pembagian eksponen -->
+                        <li><strong>Sifat Pangkat dari Pangkat:</strong> Sifat pangkat dari pangkat menjelaskan bahwa ketika suatu bilangan berpangkat dipangkatkan lagi, eksponennya dapat dikalikan. Misalnya, \( {(a^m)}^n = a^{m \cdot n} \). Contohnya, \( {(2^2)}^3 = 2^{2 \cdot 3} = 2^6 = 64 \).</li>
+                        <!-- Penjelasan tentang sifat pangkat dari pangkat -->
+                        <li><strong>Sifat Perkalian Bilangan Berpangkat dengan Pangkat yang Sama:</strong> Caranya adalah dengan mengalikan dasar bilangan sebelum memangkatkan hasilnya. Misalnya, \( a^m \times b^m = {a \times b}^m \). Contohnya, \( 2^2 \times 3^2 = {(2 \times 3)}^2 = 6^2 = 36 \).</li>
+                        <li><strong>Sifat Pembagian Bilangan Berpangkat dengan Pangkat yang Sama:</strong> Jika dua bilangan berpangkat dengan eksponen yang sama dibagi, maka bilangan pokoknya nya harus dibagi terlebih dahulu sebelum memangkatkan hasilnya. Misalnya, \( \frac {a^m}{b^m} = \frac {a}{b}^m \). Contohnya, \( \frac {6^3}{3^3} = \frac {6}{3}^3 = 2^3 = 8 \).</li>
+
+                    </ol>
+                </div>
+
+                <div id="penutup" class="content-section"> 
+                    <!-- Bagian penutup materi eksponen -->
+                    <h2>Penutup</h2>
+                    <p>Sampai di sini saja sesi belajar Matematika tentang materi eksponen kelas 10 SMA. Kamu dapat mengulang kembali rangkuman materi kelas 10 SMA ini bersama teman maupun kelompok belajar lainnya agar semakin menguasai bidang ini.</p>
+                    <!-- Pesan penutup dan saran belajar bersama dari bagian penutup -->
+                </div>
+                
+                <div id="contohsoal" class="content-section"> 
+                    <!-- Bagian Contoh Soal Eksponen -->
+                    <h2>Contoh Soal Eksponen</h2>
+                    <p>Berikut adalah beberapa contoh soal eksponen beserta jawabannya:</p>
+                    <ol>
+                        <li><p>Hitunglah \( 3^4 \).</p><p><strong>Jawaban:</strong> \( 3^4 = 81 \).</p></li>
+                        <!-- Contoh soal 1 eksponen dan jawaban -->
+                        <li><p>Hitunglah \( 3^{-3} \).</p><p><strong>Jawaban:</strong> \( 3^{-3} = \frac{1}{9} \).</p></li>
+                        <!-- Contoh soal 2 eksponen dan jawaban -->
+                        <li><p>Hitunglah \( 5^0 \).</p><p><strong>Jawaban:</strong> \( 5^0 = 1 \).</p></li>
+                        <!-- Contoh soal 3 eksponen dan jawaban -->
+                    </ol>
+                </div>
+
+                <div id="latihan" class="content-section"> 
+                    <!-- Bagian Latihan Soal Eksponen -->
+                    <h2>Latihan Soal Eksponen</h2>
+                    <p>Latihan berikut dapat kalian coba untuk mengasah kemampuan dalam menyelesaikan soal eksponen:</p>
+                    <ol>
+                        <li><p>Hitunglah \( 4^2 \).</p></li>
+                        <!-- Soal latihan 1 eksponen -->
+                        <li><p>Hitunglah \( 6^{-1} \).</p></li>
+                        <!-- Soal latihan 2 eksponen -->
+                        <li><p>Hitunglah \( 7^3 \).</p></li>
+                        <!-- Soal latihan 3 eksponen -->
+                        <li><p>Hitunglah \( 9^2 \times 3^2 \).</p></li>
+                        <li><p>Hitunglah \( \frac {5^6}{5^9} \).</p></li>
+                    </ol>
+                </div>
+
+                <div id="tentangpengembang" class="content-section"> 
+                    <!-- Bagian Tentang Pengembang -->
+                    <h2>Tentang Pengembang</h2>
+                    <div class="developer-profile">
+                        <img src="image/sad.jpg" class="developer-image">
+                        <!-- Foto pengembang halaman -->
+                        <p><strong>Nama:</strong> Rani Febriana Zalty</p>
+                        <!-- Nama pengembang -->
+                        <p><strong>NIM:</strong> E1R022020</p>
+                        <!-- NIM pengembang -->
+                        <p><strong>Program Studi:</strong> Pendidikan Matematika</p>
+                        <p><strong>Fakultas:</strong> Fakultas Keguruan dan Ilmu Pendidikan (FKIP)</p>
+                        <p><strong>Universitas:</strong> Universitas Mataram</p>
+                        <p><strong>"Satu-satunya cara untuk mengetahui apakah kamu berhasil adalah dengan mencoba."</strong></p>
+                    </div>
+                </main>
+            </div>      
+        <div class="kanan">
+            <h2>VIDEO PEMBELAJARAN</h2>
+            <iframe width="270" height="150" src="https://www.youtube.com/embed/AlrOq3W7IZ4?si=0npJ6Syfi3dmBhXy" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen></iframe>
+            <iframe width="270" height="150" src="https://www.youtube.com/embed/l57nHSVOy_w?si=856s2rA-mqe-wQFl"  
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen></iframe>
+        </div>
+    </div>
+</div>
+</body>
+</html>
